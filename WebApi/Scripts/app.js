@@ -1,3 +1,3 @@
-﻿$(document).ready(function() {
-
+﻿$(document).ready(function () {
+    $('#main').html("I'm on the page");
 });
