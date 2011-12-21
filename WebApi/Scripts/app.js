@@ -5,4 +5,7 @@
 
     $('#main').html("I'm on the page");
 
+    //What are you doing here?
+    
+    //Hi there
 });
