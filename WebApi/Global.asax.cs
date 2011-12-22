@@ -7,6 +7,7 @@ using System.Web.Security;
 using System.Web.SessionState;
 using System.ServiceModel.Activation;
 using Microsoft.ApplicationServer.Http.Activation;
+using SignalR.Routing;
 using WebApi.Api;
 
 namespace WebApi
@@ -52,6 +53,9 @@ namespace WebApi
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.Add((new ServiceRoute("api/contacts", new HttpServiceHostFactory(), typeof(ContactsApi))));
+
+            RouteTable.Routes.MapConnection<Hubs.AssetEndpoint>("assetPush", "assetPush/{*operation}");
+
         }
     }
 }

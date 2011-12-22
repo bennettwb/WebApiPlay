@@ -8,7 +8,7 @@
     }
     resizePaper();
     $(window).resize(resizePaper);
-    
+
     var map = {};
     var attr = {
         fill: "#333"
@@ -41,66 +41,69 @@
             };
         })(map[state], state);
     }; // end for
-   // r.setSize($(window).width(), $(window).height());
-   // r.setViewBox(0, 0, $(window).width(), $(window).height(), false);
-//    var city_attr = {
-//        fill: "#0f0",
-//        stroke: "none",
-//        opacity: .3
-//    };
-//    var cities = {};
-//    cities.Tokyo = r.circle(lon2x(139.7514), lat2y(35.6850), 3).attr(city_attr);
-//    cities.Seoul = r.circle(lon2x(126.9997), lat2y(37.5664), 20).attr(city_attr);
-//    cities.Mexico_City = r.circle(lon2x(-99.127571), lat2y(19.42705), 20).attr(city_attr);
-//    cities.New_York_City = r.circle(lon2x(-73.9862), lat2y(40.7662), 19).attr(city_attr);
-//    cities.Mumbai = r.circle(lon2x(72.8258), lat2y(18.9750), 19).attr(city_attr);
-//    cities.Jakarta = r.circle(lon2x(106.8294), lat2y(-6.1744), 18).attr(city_attr);
-//    cities.Sao_Paulo = r.circle(lon2x(-46.6167), lat2y(-23.5333), 18).attr(city_attr);
-//    cities.Delhi = r.circle(lon2x(77.22496), lat2y(28.635308), 18).attr(city_attr);
-//    cities.Osaka_Kobe = r.circle(lon2x(135.1667), lat2y(34.6833), 17).attr(city_attr);
-//    cities.Shanghai = r.circle(lon2x(121.4086), lat2y(31.0050), 16).attr(city_attr);
-//    cities.Manila = r.circle(lon2x(120.9822), lat2y(14.6042), 16).attr(city_attr);
-//    cities.Los_Angeles = r.circle(lon2x(-118.2956), lat2y(33.9517), 15).attr(city_attr);
-//    cities.Calcutta = r.circle(lon2x(88.3697), lat2y(22.5697), 15).attr(city_attr);
-//    cities.Moscow = r.circle(lon2x(37.617633), lat2y(55.755786), 15).attr(city_attr);
-//    cities.Cairo = r.circle(lon2x(31.249509), lat2y(30.064742), 14).attr(city_attr);
-//    cities.Lagos = r.circle(lon2x(3.395833), lat2y(6.453056), 13).attr(city_attr);
-//    cities.Buenos_Aires = r.circle(lon2x(-58.373161), lat2y(-34.608418), 13).attr(city_attr);
-//    cities.London = r.circle(lon2x(-0.126236), lat2y(51.500152), 12).attr(city_attr);
-//    cities.Beijing = r.circle(lon2x(116.4074), lat2y(39.9042), 12).attr(city_attr);
-//    cities.Karachi = r.circle(lon2x(67.028061), lat2y(24.893379), 11).attr(city_attr);
-//    var current_city = null;
-//    var city_box = null;
-//    for (var city in cities) {
-//        map[state].color = Raphael.getColor();
-//        (function (st, city) {
-//            st[0].style.cursor = "pointer";
-//            st[0].onmouseover = function () {
-//                current_city && cities[current_city].animate({ fill: "#0f0", opacity: .3 }, 300);
-//                st.animate({ fill: "#0f0", opacity: 1 }, 300);
-//                r.safari();
-//                current_city = city;
-//            };
-//            st[0].onmouseout = function () {
-//                st.animate({ fill: "#0f0", opacity: .3 }, 300);
-//                r.safari();
-//            };
-
-//            st[0].onclick = function () {
-//                if (t = document.getElementById(city_box)) { t.style.display = "none"; }
-//                if (t = document.getElementById(city)) { t.style.display = "block"; }
-//                city_box = city;
-//            };
 
 
-//            if (t = document.getElementById(city)) {
-//                t.style.left = cities[city].attr('cx') + 'px';
-//                t.style.top = cities[city].attr('cy') - 20 + 'px';
-//            }
 
-//        })(cities[city], city);
-//    }; // end for
-    
+    // r.setSize($(window).width(), $(window).height());
+    // r.setViewBox(0, 0, $(window).width(), $(window).height(), false);
+    //    var city_attr = {
+    //        fill: "#0f0",
+    //        stroke: "none",
+    //        opacity: .3
+    //    };
+    //    var cities = {};
+    //    cities.Tokyo = r.circle(lon2x(139.7514), lat2y(35.6850), 3).attr(city_attr);
+    //    cities.Seoul = r.circle(lon2x(126.9997), lat2y(37.5664), 20).attr(city_attr);
+    //    cities.Mexico_City = r.circle(lon2x(-99.127571), lat2y(19.42705), 20).attr(city_attr);
+    //    cities.New_York_City = r.circle(lon2x(-73.9862), lat2y(40.7662), 19).attr(city_attr);
+    //    cities.Mumbai = r.circle(lon2x(72.8258), lat2y(18.9750), 19).attr(city_attr);
+    //    cities.Jakarta = r.circle(lon2x(106.8294), lat2y(-6.1744), 18).attr(city_attr);
+    //    cities.Sao_Paulo = r.circle(lon2x(-46.6167), lat2y(-23.5333), 18).attr(city_attr);
+    //    cities.Delhi = r.circle(lon2x(77.22496), lat2y(28.635308), 18).attr(city_attr);
+    //    cities.Osaka_Kobe = r.circle(lon2x(135.1667), lat2y(34.6833), 17).attr(city_attr);
+    //    cities.Shanghai = r.circle(lon2x(121.4086), lat2y(31.0050), 16).attr(city_attr);
+    //    cities.Manila = r.circle(lon2x(120.9822), lat2y(14.6042), 16).attr(city_attr);
+    //    cities.Los_Angeles = r.circle(lon2x(-118.2956), lat2y(33.9517), 15).attr(city_attr);
+    //    cities.Calcutta = r.circle(lon2x(88.3697), lat2y(22.5697), 15).attr(city_attr);
+    //    cities.Moscow = r.circle(lon2x(37.617633), lat2y(55.755786), 15).attr(city_attr);
+    //    cities.Cairo = r.circle(lon2x(31.249509), lat2y(30.064742), 14).attr(city_attr);
+    //    cities.Lagos = r.circle(lon2x(3.395833), lat2y(6.453056), 13).attr(city_attr);
+    //    cities.Buenos_Aires = r.circle(lon2x(-58.373161), lat2y(-34.608418), 13).attr(city_attr);
+    //    cities.London = r.circle(lon2x(-0.126236), lat2y(51.500152), 12).attr(city_attr);
+    //    cities.Beijing = r.circle(lon2x(116.4074), lat2y(39.9042), 12).attr(city_attr);
+    //    cities.Karachi = r.circle(lon2x(67.028061), lat2y(24.893379), 11).attr(city_attr);
+    //    var current_city = null;
+    //    var city_box = null;
+    //    for (var city in cities) {
+    //        map[state].color = Raphael.getColor();
+    //        (function (st, city) {
+    //            st[0].style.cursor = "pointer";
+    //            st[0].onmouseover = function () {
+    //                current_city && cities[current_city].animate({ fill: "#0f0", opacity: .3 }, 300);
+    //                st.animate({ fill: "#0f0", opacity: 1 }, 300);
+    //                r.safari();
+    //                current_city = city;
+    //            };
+    //            st[0].onmouseout = function () {
+    //                st.animate({ fill: "#0f0", opacity: .3 }, 300);
+    //                r.safari();
+    //            };
+
+    //            st[0].onclick = function () {
+    //                if (t = document.getElementById(city_box)) { t.style.display = "none"; }
+    //                if (t = document.getElementById(city)) { t.style.display = "block"; }
+    //                city_box = city;
+    //            };
+
+
+    //            if (t = document.getElementById(city)) {
+    //                t.style.left = cities[city].attr('cx') + 'px';
+    //                t.style.top = cities[city].attr('cy') - 20 + 'px';
+    //            }
+
+    //        })(cities[city], city);
+    //    }; // end for
+
     function lon2x(lon) {
         var xfactor = 2.6938;
         var xoffset = 465.4;
