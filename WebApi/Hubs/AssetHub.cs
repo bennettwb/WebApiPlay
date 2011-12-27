@@ -12,8 +12,10 @@ namespace WebApi.Hubs
 
         protected override System.Threading.Tasks.Task OnReceivedAsync(string clientId, string data)
         {
-            return Connection.Broadcast("Got data");
+            
+            return Connection.Broadcast(EventConduit.Process(data));
         }
       
+
     }
 }

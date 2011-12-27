@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="EditorialSiteDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="EditorialSiteDBModelStoreContainer">
+          <EntitySet Name="CntryTb" EntityType="EditorialSiteDBModel.Store.CntryTb" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CtyTb" EntityType="EditorialSiteDBModel.Store.CtyTb" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="StPrvncTb" EntityType="EditorialSiteDBModel.Store.StPrvncTb" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="CntryTb">
+          <Key>
+            <PropertyRef Name="CntryI" />
+          </Key>
+          <Property Name="CntryI" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CntryC" Type="char" Nullable="false" MaxLength="3" />
+          <Property Name="CntryN" Type="varchar" Nullable="false" MaxLength="128" />
+          <Property Name="RgnI" Type="int" Nullable="false" />
+          <Property Name="TeamsCntryId" Type="int" Nullable="false" />
+          <Property Name="TeamsCntryN" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="SrtOrdr" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CtyTb">
+          <Key>
+            <PropertyRef Name="CtyI" />
+          </Key>
+          <Property Name="CtyI" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CtyN" Type="varchar" Nullable="false" MaxLength="64" />
+          <Property Name="StPrvncI" Type="int" Nullable="false" />
+          <Property Name="TmZnI" Type="int" Nullable="false" />
+          <Property Name="LclN" Type="nvarchar" Nullable="false" MaxLength="64" />
+          <Property Name="Latd" Type="float" />
+          <Property Name="Lngtd" Type="float" />
+          <Property Name="SrtOrdr" Type="smallint" Nullable="false" />
+          <Property Name="StatC" Type="char" Nullable="false" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="StPrvncTb">
+          <Key>
+            <PropertyRef Name="StPrvncI" />
+          </Key>
+          <Property Name="StPrvncI" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="StPrvncN" Type="varchar" Nullable="false" MaxLength="128" />
+          <Property Name="CntryI" Type="int" Nullable="false" />
+          <Property Name="UsStC" Type="char" MaxLength="2" />
+          <Property Name="StatC" Type="char" Nullable="false" MaxLength="1" />
+        </EntityType>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EditorialSiteDBModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="LocationEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Countries" EntityType="EditorialSiteDBModel.Country" />
+          <EntitySet Name="Cities" EntityType="EditorialSiteDBModel.City" />
+          <EntitySet Name="States" EntityType="EditorialSiteDBModel.State" />
+          <AssociationSet Name="CityState" Association="EditorialSiteDBModel.CityState">
+            <End Role="City" EntitySet="Cities" />
+            <End Role="State" EntitySet="States" />
+          </AssociationSet>
+          <AssociationSet Name="StateCountry" Association="EditorialSiteDBModel.StateCountry">
+            <End Role="State" EntitySet="States" />
+            <End Role="Country" EntitySet="Countries" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="CntryI" />
+          </Key>
+          <Property Name="CntryI" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CntryC" Type="String" Nullable="false" MaxLength="3" Unicode="false" FixedLength="true" />
+          <Property Name="CntryN" Type="String" Nullable="false" MaxLength="128" Unicode="false" FixedLength="false" />
+          <Property Name="RgnI" Type="Int32" Nullable="false" />
+          <Property Name="TeamsCntryId" Type="Int32" Nullable="false" />
+          <Property Name="TeamsCntryN" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="SrtOrdr" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="States" Relationship="EditorialSiteDBModel.StateCountry" FromRole="Country" ToRole="State" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="CtyI" />
+          </Key>
+          <Property Name="CtyI" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CtyN" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+          <Property Name="StPrvncI" Type="Int32" Nullable="false" />
+          <Property Name="TmZnI" Type="Int32" Nullable="false" />
+          <Property Name="LclN" Type="String" Nullable="false" MaxLength="64" Unicode="true" FixedLength="false" />
+          <Property Name="Latd" Type="Double" />
+          <Property Name="Lngtd" Type="Double" />
+          <Property Name="SrtOrdr" Type="Int16" Nullable="false" />
+          <Property Name="StatC" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="true" />
+          <NavigationProperty Name="State" Relationship="EditorialSiteDBModel.CityState" FromRole="City" ToRole="State" />
+        </EntityType>
+        <EntityType Name="State">
+          <Key>
+            <PropertyRef Name="StPrvncI" />
+          </Key>
+          <Property Name="StPrvncI" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StPrvncN" Type="String" Nullable="false" MaxLength="128" Unicode="false" FixedLength="false" />
+          <Property Name="CntryI" Type="Int32" Nullable="false" />
+          <Property Name="UsStC" Type="String" MaxLength="2" Unicode="false" FixedLength="true" />
+          <Property Name="StatC" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="true" />
+          <NavigationProperty Name="Cities" Relationship="EditorialSiteDBModel.CityState" FromRole="State" ToRole="City" />
+          <NavigationProperty Name="Country" Relationship="EditorialSiteDBModel.StateCountry" FromRole="State" ToRole="Country" />
+        </EntityType>
+        <Association Name="CityState">
+          <End Type="EditorialSiteDBModel.City" Role="City" Multiplicity="*" />
+          <End Type="EditorialSiteDBModel.State" Role="State" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="StPrvncI" />
+            </Principal>
+            <Dependent Role="City">
+              <PropertyRef Name="StPrvncI" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="StateCountry">
+          <End Type="EditorialSiteDBModel.State" Role="State" Multiplicity="*" />
+          <End Type="EditorialSiteDBModel.Country" Role="Country" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="CntryI" />
+            </Principal>
+            <Dependent Role="State">
+              <PropertyRef Name="CntryI" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EditorialSiteDBModelStoreContainer" CdmEntityContainer="LocationEntities">
+          <EntitySetMapping Name="Countries"><EntityTypeMapping TypeName="EditorialSiteDBModel.Country"><MappingFragment StoreEntitySet="CntryTb">
+            <ScalarProperty Name="CntryI" ColumnName="CntryI" />
+            <ScalarProperty Name="CntryC" ColumnName="CntryC" />
+            <ScalarProperty Name="CntryN" ColumnName="CntryN" />
+            <ScalarProperty Name="RgnI" ColumnName="RgnI" />
+            <ScalarProperty Name="TeamsCntryId" ColumnName="TeamsCntryId" />
+            <ScalarProperty Name="TeamsCntryN" ColumnName="TeamsCntryN" />
+            <ScalarProperty Name="SrtOrdr" ColumnName="SrtOrdr" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Cities"><EntityTypeMapping TypeName="EditorialSiteDBModel.City"><MappingFragment StoreEntitySet="CtyTb">
+            <ScalarProperty Name="CtyI" ColumnName="CtyI" />
+            <ScalarProperty Name="CtyN" ColumnName="CtyN" />
+            <ScalarProperty Name="StPrvncI" ColumnName="StPrvncI" />
+            <ScalarProperty Name="TmZnI" ColumnName="TmZnI" />
+            <ScalarProperty Name="LclN" ColumnName="LclN" />
+            <ScalarProperty Name="Latd" ColumnName="Latd" />
+            <ScalarProperty Name="Lngtd" ColumnName="Lngtd" />
+            <ScalarProperty Name="SrtOrdr" ColumnName="SrtOrdr" />
+            <ScalarProperty Name="StatC" ColumnName="StatC" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="States"><EntityTypeMapping TypeName="EditorialSiteDBModel.State"><MappingFragment StoreEntitySet="StPrvncTb">
+            <ScalarProperty Name="StPrvncI" ColumnName="StPrvncI" />
+            <ScalarProperty Name="StPrvncN" ColumnName="StPrvncN" />
+            <ScalarProperty Name="CntryI" ColumnName="CntryI" />
+            <ScalarProperty Name="UsStC" ColumnName="UsStC" />
+            <ScalarProperty Name="StatC" ColumnName="StatC" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Locations">
+        <EntityTypeShape EntityType="EditorialSiteDBModel.Country" Width="1.5" PointX="1.25" PointY="2.125" Height="2.5571907552083331" IsExpanded="true" />
+        <EntityTypeShape EntityType="EditorialSiteDBModel.City" Width="1.5" PointX="4.75" PointY="0.5" Height="2.9417936197916665" IsExpanded="true" />
+        <EntityTypeShape EntityType="EditorialSiteDBModel.State" Width="1.5" PointX="7.625" PointY="2" Height="2.172587890625" IsExpanded="true" />
+        <AssociationConnector Association="EditorialSiteDBModel.CityState">
+          <ConnectorPoint PointX="6.25" PointY="2.7208968098958333" />
+          <ConnectorPoint PointX="7.625" PointY="2.7208968098958333" />
+        </AssociationConnector>
+        <AssociationConnector Association="EditorialSiteDBModel.StateCountry">
+          <ConnectorPoint PointX="7.625" PointY="3.9345914713541661" />
+          <ConnectorPoint PointX="2.75" PointY="3.9345914713541661" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

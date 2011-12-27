@@ -1,7 +1,7 @@
 ﻿$(document).ready(function () {
     var current = null;
     var r = new ScaleRaphael("worldmap", 1000, 400); // Raphael("worldmap", 1000, 400);
-
+    window.rx = r
     function resizePaper() {
         var win = $(this);
         r.changeSize(win.width(), win.height(), true, false);
@@ -104,22 +104,22 @@
     //        })(cities[city], city);
     //    }; // end for
 
-    function lon2x(lon) {
-        var xfactor = 2.6938;
-        var xoffset = 465.4;
-        var x = (lon * xfactor) + xoffset;
-        return x;
-    }
-    function lat2y(lat) {
-        var yfactor = -2.6938;
-        var yoffset = 227.066;
-        var y = (lat * yfactor) + yoffset;
-        return y;
-    }
+   
 
 
 });
-
+function lon2x(lon) {
+    var xfactor = 2.6938;
+    var xoffset = 465.4;
+    var x = (lon * xfactor) + xoffset;
+    return x;
+}
+function lat2y(lat) {
+    var yfactor = -2.6938;
+    var yoffset = 227.066;
+    var y = (lat * yfactor) + yoffset;
+    return y;
+}
 function render_map(r, map, attr) {
 
     map.AE = r.path("M604.196,161.643l0.514,-0.129l0,0.772l2.188,-0.386l2.189,0l1.672,0.129l1.803,-1.802l2.058,-1.802l1.674,-1.673l0.518,0.900l0.385,2.189l-1.417,0l-0.258,1.802l0.517,0.386l-1.159,0.515l-0.129,1.029l-0.773,1.159l0,1.030l-0.514,0.644l-8.110,-1.416l-1.031,-2.704l0.127,0.643z").attr(attr);
