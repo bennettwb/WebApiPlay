@@ -1,7 +1,7 @@
 ﻿$(document).ready(function () {
     var current = null;
     var r = new ScaleRaphael("worldmap", 1000, 400); // Raphael("worldmap", 1000, 400);
-    window.rx = r
+    window.rx = r;
     function resizePaper() {
         var win = $(this);
         r.changeSize(win.width(), win.height(), true, false);
@@ -104,7 +104,7 @@
     //        })(cities[city], city);
     //    }; // end for
 
-   
+
 
 
 });
